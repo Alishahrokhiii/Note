@@ -18,10 +18,11 @@ class ViewControllerEditNote: UIViewController {
     internal var task_title:String!
     internal var task_desc:String!
     internal var task_done:Int!
+    //
+    let note = StructNote()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         if task_id != nil
         {
         // Do any additional setup after loading the view.
@@ -34,9 +35,8 @@ class ViewControllerEditNote: UIViewController {
   
     @IBAction func SaveData(_ sender: Any) {
         
-        
+        print(task_id)
         if task_id == nil {
-        
         let note = StructNote()
         note.task_Id = task_id
         note.task_title = edtTaskTitle.text
@@ -112,12 +112,14 @@ class ViewControllerEditNote: UIViewController {
                 {
                  for i in 0..<AppDelegate.notes.count {
                     if  AppDelegate.notes[i].task_Id   == self.task_id {
+                        DispatchQueue.main.async{
                         AppDelegate.notes[i].task_title = self.edtTaskTitle.text
                         AppDelegate.notes[i].task_desc =  self.txtTaskDesc.text
                         AppDelegate.notes[i].task_done = (self.SwitchTaskDone.isOn ? 1 : 0)
+                        }
                      }
                  }
-                    DispatchQueue.main.async{
+                 DispatchQueue.main.async{
                  self.navigationController?.popToRootViewController(animated: true)
                     }
              }
@@ -127,6 +129,51 @@ class ViewControllerEditNote: UIViewController {
             
         }
     }
-           
+    @IBAction func DeleteRecord(_ sender: Any) {
+        
+        var dictionary = Dictionary<String, AnyObject>()
+                    
+                   dictionary["task_id"] = task_id as AnyObject?
+                   
+                    guard let url = URL(string: "http://192.168.64.3/Service.php?action=delete") else { return }
+                    
+                    var request = URLRequest(url: url)
+                    request.httpMethod = "POST"
+                    request.timeoutInterval = TimeInterval(10)
+                    
+                           do {
+                           let jsonData = try JSONSerialization.data(withJSONObject: dictionary, options: JSONSerialization.WritingOptions(rawValue:0))
+                            
+                            request.httpBody = jsonData
+                           }catch{
+                               print("JSON ERORR")
+                           }
+                    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                    request.addValue("application/json", forHTTPHeaderField: "Accept")
+                    
+                    let task = URLSession.shared.dataTask(with: request) { (nsdata, response, erorr) in
+                       
+                       let serverResponse = String(data: nsdata!, encoding: String.Encoding.utf8)
+                       if serverResponse == "OK"
+                       {
+                        for i in 0..<AppDelegate.notes.count {
+                        if  AppDelegate.notes[i].task_Id   == self.task_id {
+                            AppDelegate.notes.remove(at: i)
+                         
+                         }
+                        }
+                       }
+                        else{
+                            print("Erorr Delete")
+                        }
+                           
+                    }
+                   
+                    task.resume()
+                   
+        
+        }
+        
     }
+    
     

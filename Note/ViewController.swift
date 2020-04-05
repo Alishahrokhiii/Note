@@ -37,7 +37,8 @@ class ViewController: UIViewController , UITableViewDelegate ,UITableViewDataSou
                 
                /// print((record as AnyObject).value(forKey: "task_desc")!)
                 let note = StructNote()
-                note.task_Id = (record as AnyObject).value(forKey: "task_id") as? Int
+                let task_IdStr = ((record) as AnyObject).value(forKey: "task_id")as? String
+                note.task_Id = Int(task_IdStr!)
                 note.task_title = (record as AnyObject).value(forKey: "task_title") as? String
                 note.task_desc = (record as AnyObject).value(forKey: "task_desc") as? String
                 note.task_done = (record as AnyObject).value(forKey: "task_done") as? Int

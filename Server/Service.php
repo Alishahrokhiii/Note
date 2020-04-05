@@ -65,7 +65,7 @@ $conn = getConnection();
     $task_desc = $data["task_desc"];
     $task_done = $data["task_done"];
 
-    $sql = "UPDATE task SET task_title ='$task_title',task_desc ='$task_dask_desc',task_done ='$task_done' WHERE task_id='task_id' ";
+    $sql = "UPDATE task SET task_title ='$task_title',task_desc ='$task_desc',task_done ='$task_done' WHERE task_id='task_id' ";
     if (mysqli_query($conn,$sql)){
         echo "recourd updated successfulluy";
     }else{
@@ -73,6 +73,17 @@ $conn = getConnection();
     }
 
 }else if($action == "delete"){
+    $conn = getConnection();
+    $jsonString = file_get_contents('php://input');
+    $data = json_decode($jsonString,true);
+    $task_id = $data["task_id"];
+
+    $sql = "DELETE FROM task WHERE task_id= '$task_id'";
+    if (mysqli_query($conn,$sql)){
+        echo "OK";
+    }else{
+        echo "Erorr updating record:   " . mysqli_error($conn);
+    }
 
 }
 function getConnection(){

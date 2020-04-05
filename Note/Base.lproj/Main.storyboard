@@ -125,10 +125,20 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUS-r8-K0X">
-                                <rect key="frame" x="184" y="674" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="190" y="674" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="SaveData:" destination="cnr-xE-cF2" eventType="touchUpInside" id="aT9-qE-FYl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUo-Jy-7cM">
+                                <rect key="frame" x="185" y="704" width="45" height="30"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="DeleteRecord:" destination="cnr-xE-cF2" eventType="touchUpInside" id="nSU-qW-KNT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -142,12 +152,15 @@
                             <constraint firstItem="myh-vg-Te2" firstAttribute="leading" secondItem="WG3-a2-MwN" secondAttribute="leading" constant="20" id="O5D-xt-hFX"/>
                             <constraint firstItem="4zO-WW-g94" firstAttribute="top" secondItem="WG3-a2-MwN" secondAttribute="top" constant="24" id="YK8-hC-kvC"/>
                             <constraint firstItem="WG3-a2-MwN" firstAttribute="trailing" secondItem="Zji-A9-vkd" secondAttribute="trailing" constant="20" id="fMd-ws-it2"/>
+                            <constraint firstItem="CUo-Jy-7cM" firstAttribute="leading" secondItem="WG3-a2-MwN" secondAttribute="leading" constant="185" id="fOR-Yt-APE"/>
                             <constraint firstItem="ASx-oD-E41" firstAttribute="top" secondItem="i9T-sC-4T8" secondAttribute="bottom" constant="15" id="m3j-u2-bhl"/>
                             <constraint firstItem="i9T-sC-4T8" firstAttribute="leading" secondItem="4zO-WW-g94" secondAttribute="trailing" constant="32" id="mRC-SB-P2p"/>
                             <constraint firstItem="myh-vg-Te2" firstAttribute="top" secondItem="4zO-WW-g94" secondAttribute="bottom" constant="26" id="skL-1I-KyB"/>
                             <constraint firstItem="rUS-r8-K0X" firstAttribute="centerX" secondItem="Zji-A9-vkd" secondAttribute="centerX" id="tjo-4Q-yTA"/>
                             <constraint firstItem="Zji-A9-vkd" firstAttribute="top" secondItem="ASx-oD-E41" secondAttribute="bottom" constant="37" id="ukn-Fb-tBD"/>
+                            <constraint firstItem="CUo-Jy-7cM" firstAttribute="top" secondItem="rUS-r8-K0X" secondAttribute="bottom" id="vzL-JV-EhW"/>
                             <constraint firstItem="rUS-r8-K0X" firstAttribute="top" secondItem="Zji-A9-vkd" secondAttribute="bottom" constant="91" id="xId-AX-56e"/>
+                            <constraint firstItem="CUo-Jy-7cM" firstAttribute="centerX" secondItem="rUS-r8-K0X" secondAttribute="centerX" id="xoC-dw-g37"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WG3-a2-MwN"/>
                     </view>

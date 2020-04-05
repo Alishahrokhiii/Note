@@ -12,6 +12,8 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var LableTaskTitle: UILabel!
     @IBOutlet weak var SwitchTaskDone: UISwitch!
     
+    internal var task_id:Int!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
