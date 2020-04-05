@@ -21,7 +21,8 @@ class ViewController: UIViewController , UITableViewDelegate ,UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        navigationController?.navigationBar.barTintColor = UIColor.blue
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
         
         guard let url = URL(string: "http://192.168.64.3/Service.php?action=select") else { return }
