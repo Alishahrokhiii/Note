@@ -156,16 +156,21 @@ class ViewControllerEditNote: UIViewController {
                        let serverResponse = String(data: nsdata!, encoding: String.Encoding.utf8)
                        if serverResponse == "OK"
                        {
-                        for i in 0..<AppDelegate.notes.count {
-                        if  AppDelegate.notes[i].task_Id   == self.task_id {
-                            AppDelegate.notes.remove(at: i)
-                         
-                         }
+                        var i = 0
+                        while i<AppDelegate.notes.count {
+                            if  AppDelegate.notes[i].task_Id   == self.task_id {
+                                AppDelegate.notes.remove(at: i)
+                                DispatchQueue.main.async{
+                                self.navigationController?.popToRootViewController(animated: true)
+                                   }
+                            }
+                            i = i+1
                         }
+//                        for i in 0..<AppDelegate.notes.count {
+//
+//                        }
                        }
-                        else{
-                            print("Erorr Delete")
-                        }
+                        
                            
                     }
                    

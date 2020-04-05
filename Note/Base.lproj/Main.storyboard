@@ -164,7 +164,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WG3-a2-MwN"/>
                     </view>
+                    <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="SwitchTaskDone" destination="ASx-oD-E41" id="9jG-nc-dXK"/>
                         <outlet property="edtTaskTitle" destination="i9T-sC-4T8" id="lfI-oq-kc3"/>
